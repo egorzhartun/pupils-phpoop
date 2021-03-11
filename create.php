@@ -16,8 +16,8 @@
 <body>
     <?php require_once('./includes/navbar.php'); ?>
     <div class="container my-5">
-        
-        <?php require('./includes/states.php'); ?>
+
+        <?php require_once('./includes/states.php'); ?>
 
         <form class="bg-white shadow-sm p-5" method="post">
 
@@ -42,7 +42,7 @@
                     <option selected>Выбрать уклон класса</option>
 
                     <?php
-                        while($row = $baisList->fetch_assoc()) {  
+                        while($row = $baisList->fetch_assoc()) {
                     ?>
                         <option value="<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></option>
                     <?php

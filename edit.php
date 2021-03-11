@@ -1,18 +1,19 @@
 <?php
     require_once('./includes/load.php');
 
-    if(isset($_GET['id'])) {
+    if(isset($_GET["id"])) {
 
-        if(intval(0) == null) {
+        if(intval($_GET["id"]) == null) {
             header("Location: index.php");
         } else {
             $pupils = $pupil->show($_GET["id"]);
             $showBiasOnID = $bais->show($_GET["id"]);
         }
     }
-    
-    if(isset($_POST['update'])) {
+
+    if(isset($_POST["update"])) {
         $pupil->update($_POST, $_GET["id"]);
+        $pupils = $pupil->show($_GET["id"]);
         $showBiasOnID = $bais->show($_GET["id"]);
     }
 
@@ -38,16 +39,17 @@
 <body>
     <?php require_once "includes/navbar.php"; ?>
     <div class="container my-5">
-        
+
         <?php require('./includes/states.php'); ?>
-        
+
         <form class="bg-white shadow-sm p-5" method="post">
 
             <h5 class="pb-4">Редактировать</h5>
 
             <p>
                 <?php
-                    echo "Текущий уклон класса - " . $showBiasOnID["name"];
+                    echo "Текущий уклон класса - " . $showBiasOnID["name"] . "<br>";
+                    echo "Вам следует сменить уклон класса, либо выбрать текущий.";
                 ?>
             </p>
 
